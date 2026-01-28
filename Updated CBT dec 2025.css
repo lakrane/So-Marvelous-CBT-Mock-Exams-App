@@ -1,0 +1,527 @@
+/* ========================================
+   SO_MARVELOUS CBT MOCK EXAMS - FIXED CSS
+   ======================================== */
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #302b63, #0f0c29, #24243e);
+  color: #e8e8ff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.6s ease, color 0.4s ease;
+}
+/* LIGHT MODE */
+body.light {
+  background: linear-gradient(135deg, #c6f6ff, #e9fff3, #ffe8f2);
+  color: #222;
+}
+
+/* =====================
+   DROPDOWN VISIBILITY FIX (CRITICAL)
+===================== */
+/* Main select box */
+select {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #7b42ff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+  appearance: none;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+body.light select {
+  background: #fff;
+  color: #000;
+  border-color: #00d4ff;
+  background-image: none;
+}
+
+/* Dropdown options - visible in both modes */
+select option {
+  background-color: #0f0c29 !important; /* Dark background in dark mode */
+  color: #e8e8ff !important; /* Light text in dark mode */
+  padding: 10px;
+}
+body.light select option {
+  background-color: #ffffff !important; /* White background in light mode */
+  color: #000000 !important; /* Black text in light mode */
+}
+
+/* =====================
+   BACKGROUND SLIDESHOW
+===================== */
+.bg-slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+.slide.active {
+  opacity: 0.35;
+}
+
+/* =====================
+   CONTAINER & PAGES
+===================== */
+.container {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page {
+  display: none;
+  width: 100%;
+  max-width: 1100px;
+}
+.page.active {
+  display: block;
+  animation: fadeUp 0.6s ease;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   HOME CARD
+===================== */
+.welcome-card {
+  background: rgba(10, 10, 40, 0.75);
+  backdrop-filter: blur(14px);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(0, 246, 255, 0.25);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+body.light .welcome-card {
+  background: rgba(255,255,255,0.9);
+}
+
+/* =====================
+   TITLES
+===================== */
+.title-glow {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #00f6ff, #ff6bff, #7b42ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.subtitle {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  color: #a8e6ff;
+}
+body.light .subtitle { color: #0066cc; }
+
+.motivation {
+  margin: 20px 0;
+  font-weight: 600;
+  color: #ffb3c1;
+}
+body.light .motivation { color: #d4386b; }
+
+/* =====================
+   FORMS
+===================== */
+.form-group {
+  margin: 18px 0;
+  text-align: left;
+}
+label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #00f6ff;
+}
+body.light label { color: #0066cc; }
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 2px solid #7b42ff;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1rem;
+}
+body.light input {
+  background: #fff;
+  color: #000;
+  border-color: #00d4ff;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.btn {
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+.btn.primary {
+  background: linear-gradient(90deg, #00f6ff, #ff6bff);
+  color: #000;
+}
+.btn.secondary {
+  background: transparent;
+  border: 2px solid #00f6ff;
+  color: #00f6ff;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* =====================
+   EXAM LAYOUT
+===================== */
+.exam-wrapper {
+  background: rgba(12, 12, 40, 0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 30px;
+  border: 1px solid rgba(0,246,255,0.25);
+}
+.exam-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.timer {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00f6ff;
+}
+/* BODY */
+.exam-body {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 30px;
+}
+/* QUESTION AREA */
+.question-area h2 {
+  margin-bottom: 10px;
+}
+.question-text {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+}
+.option input {
+  transform: scale(1.3);
+}
+/* NAV BUTTONS */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+/* =====================
+   QUESTION GRID
+===================== */
+.question-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+.q-btn {
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  cursor: pointer;
+  font-weight: 600;
+}
+.q-btn.active {
+  background: linear-gradient(90deg, #00f6ff, #7b42ff);
+  color: #000;
+}
+.q-btn.answered {
+  background: linear-gradient(90deg, #00ff99, #00cc66);
+  color: #000;
+}
+
+.certificate {
+  background: linear-gradient(135deg, #fffbe6, #f0f8ff); /* Soft cream to light blue */
+  color: #000;
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 800px;
+  margin: 40px auto;
+  border: 15px double #ffd700; /* Thick gold double border */
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  position: relative;
+  font-family: 'Georgia', serif; /* Elegant font */
+  background-image: 
+    radial-gradient(circle at top left, rgba(255,215,0,0.1), transparent 50%),
+    radial-gradient(circle at bottom right, rgba(0,246,255,0.1), transparent 50%);
+}
+
+.certificate::before {
+  content: "★ ★ ★";
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  color: #ffd700;
+}
+
+.certificate::after {
+  content: "Official Mock Exam Certificate";
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1rem;
+  color: #7b42ff;
+  font-style: italic;
+}
+
+.certificate h1 {
+  font-size: 3rem;
+  color: #7b42ff;
+  margin: 20px 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.score {
+  font-size: 2.5rem;
+  color: #ff6bff;
+  font-weight: bold;
+}
+
+
+background-image: url('CERTIFICATE.jpg');
+background-size: cover;
+background-position: center;
+color: #000; /* Adjust text color for visibility */
+
+
+
+
+
+/* =====================
+   CONFETTI
+===================== */
+#confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .exam-body {
+    grid-template-columns: 1fr;
+  }
+  .question-grid {
+    grid-template-columns: repeat(10, 1fr);
+    margin-top: 20px;
+  }
+}
+
+
+
+
+
+/* TOP LEFT BUTTONS */
+.skip-btn {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(123, 66, 255, 0.8);
+  color: #fff;
+  font-size: 0.9rem;
+  padding: 8px 16px;
+}
+
+.top-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+}
+
+/* =====================
+   THEME TOGGLE SWITCH - EXACT PURPLE DESIGN FROM IMAGE
+===================== */
+.theme-switch-wrapper {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #8a2be2, #9932cc); /* Purple gradient */
+  border-radius: 40px;
+  transition: 0.4s;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 32px;
+  width: 32px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transform: translateX(0);
+}
+
+input:checked + .switch-slider {
+  background: linear-gradient(90deg, #9932cc, #8a2be2);
+}
+
+input:checked + .switch-slider:before {
+  transform: translateX(40px); /* Moves circle to right */
+}
+
+/* Glowing effect on knob */
+.switch-slider:before {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(138, 43, 226, 0.6);
+}
+
+/* Label Text */
+.theme-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+  transition: color 0.4s;
+}
+
+body.light .theme-label {
+  color: #000;
+  text-shadow: none;
+}
+
+
+
+
+/* ZOOM CONTROLS - LEFT MIDDLE, VERTICAL */
+.zoom-controls.left-middle {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.zoom-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(135deg, #7b42ff, #00f6ff);
+  color: #000;
+  width: 80px;
+  padding: 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: all 0.3s;
+}
+
+.zoom-btn span {
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+}
+
+.zoom-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0,246,255,0.6);
+}
