@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>So_Marvelous CBT Mock Exams</title>
+  <link rel="stylesheet" href="Updated CBT dec 2025.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- FIX FOR DROPDOWN TEXT VISIBILITY -->
+  <style>
+    /* Ensure dropdown options are visible in both themes */
+    select option {
+      background-color: #0f0c29; /* Dark background for dark mode */
+      color: #e8e8ff; /* Light text for dark mode */
+    }
+    body.light select option {
+      background-color: #ffffff; /* White background for light mode */
+      color: #000000; /* Black text for light mode */
+    }
+  </style>
+</head>
+<body>
+ 
+
+
+  <!-- Parent/Admin Login (Top Left) -->
+  <div class="admin-link">
+    <button id="adminBtn" class="btn primary top-btn">Parent/Admin Login</button>
+  </div>
+
+<!-- Theme Toggle Switch (Exact Match to Your Image) -->
+<div class="theme-switch-wrapper">
+  <label class="toggle-switch">
+    <input type="checkbox" id="themeCheckbox">
+    <span class="switch-slider"></span>
+  </label>
+  <span class="theme-label" id="modeLabel">Dark Mode</span>
+</div>
+
+
+  <!-- Zoom Controls (Left Middle, Vertical Stack with Arrows) -->
+  <div class="zoom-controls left-middle">
+    <button id="zoomIn" class="zoom-btn">
+      <span>↑</span> Zoom In
+    </button>
+    <button id="zoomOut" class="zoom-btn">
+      <span>↓</span> Zoom Out
+    </button>
+  </div>
+
+  <!-- Background Slideshow -->
+  <div class="bg-slideshow">
+    <img src="khgkjhkj.png" class="slide active" alt="Students">
+    <img src="Gideon in BSA1.png" class="slide" alt="Robotics">
+    <img src="Marvy in BCA.png" class="slide" alt="Coding">
+    <img src="Miracle.png" class="slide" alt="Science">
+    <img src="Gospel 112.png" class="slide" alt="Success">
+  </div>
+
+  
+
+  <!-- Main Container -->
+  <div class="container" id="app">
+
+    <!-- HOME PAGE -->
+    <section id="home" class="page active">
+      <div class="welcome-card">
+        <h1 class="title-glow">So_Marvelous CBT</h1>
+        <p class="subtitle">Mock Exams for Junior Secondary Schools</p>
+        <p class="motivation">You are brilliant • You are capable • You will excel!</p>
+
+        <div class="form-group">
+          <label for="subjectSelect">Choose Subject</label>
+          <select id="subjectSelect" required>
+            <option value="">-- Select Subject --</option>
+            <option value="computer">Computer Studies</option>
+            <option value="math">Mathematics</option>
+            <option value="english">English Language</option>
+            <option value="science">Basic Science</option>
+            <option value="business">Business Studies</option>
+            <option value="home">Home Economics</option>
+            <option value="civic">Civic Education</option>
+            <option value="crs">Christian Religious Studies</option>
+            <option value="gov">Government</option>
+            <option value="tourism">Tourism</option>
+            <option value="currentaffairs">Current Affairs</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Examination Number</label>
+          <input type="text" id="examNumber" placeholder="e.g. JS123456" required />
+        </div>
+
+        <div class="form-group">
+          <label>Password (Optional)</label>
+          <input type="password" id="password" placeholder="Any password" />
+        </div>
+
+        <button id="startExam" class="btn primary big">Start Exam 🚀</button>
+
+        <div class="rules">
+          <h3>Exam Rules</h3>
+          <ul>
+            <li>30 minutes per subject</li>
+            <li>50 questions</li>
+            <li>You can review answers</li>
+            <li>Submit when ready</li>
+            <li>Believe in yourself — you've got this!</li>
+          </ul>
+        </div>
+
+        <button class="btn secondary" id="tipsBtn">Exam Tips & Conduct</button>
+      </div>
+
+      <footer>
+        <a href="https://wa.me/2348104727681" target="_blank" class="social">
+          <img src="kdh logo1.png" alt="WhatsApp" width="30">
+        </a>
+        <p>Powered by <a href="https://wa.me/2348104727681" target="_blank">Krane Digital Hub</a></p>
+      </footer>
+    </section>
+
+    <!-- EXAM PAGE -->
+    <section id="exam" class="page">
+      <div class="exam-wrapper">
+        <!-- TOP BAR -->
+        <div class="exam-top">
+          <button id="submitExam" class="btn secondary">Submit Exam</button>
+          <div class="timer" id="timer">30:00</div>
+        </div>
+        <!-- BODY -->
+        <div class="exam-body">
+          <!-- QUESTION AREA -->
+          <div class="question-area">
+            <h2 id="question-number">Question 1</h2>
+            <p class="question-text" id="question-text"></p>
+            <div class="options" id="options"></div>
+            <div class="nav-buttons">
+              <button id="prevBtn" class="btn secondary">Previous</button>
+              <button id="nextBtn" class="btn primary">Next</button>
+            </div>
+          </div>
+          <!-- QUESTION NAV GRID -->
+          <div class="question-grid" id="questionGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS PAGE -->
+    <section id="results" class="page">
+      <canvas id="confetti"></canvas>
+      <div class="certificate" id="certificate">
+        <h1>Certificate of Completion</h1>
+        <p>This certifies that</p>
+        <h2 id="cert-name"></h2>
+        <p>has successfully completed the</p>
+        <h3 id="cert-subject"></h3>
+        <p class="score" id="cert-score"></p>
+        <p id="cert-message"></p>
+        <p>Date: <span id="cert-date"></span></p>
+        <div class="cert-actions">
+          <button onclick="window.print()" class="btn primary">Print Certificate</button>
+          <button onclick="location.reload()" class="btn secondary">Back to Home</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIPS PAGE -->
+    <section id="tips" class="page"></section>
+
+    <!-- ADMIN PAGE -->
+    <section id="admin" class="page"></section>
+
+  </div>
+
+  <script src="Updated CBT dec 2025.js"></script>
+</body>
+</html>
+
+
+<!-- next i will optimize this app to be able to be used in all devices like android/smart/apple/ phones, tabs, other portable devices or much larger devices so we can prepare it to turn to a downloadable app 
